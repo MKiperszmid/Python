@@ -16,8 +16,8 @@ def double_sort(lst):
     """
     no_of_elements = len(lst)
     for _ in range(
-                int(((no_of_elements - 1) / 2) + 1)
-                ):  # we don't need to traverse to end of list as
+        int(((no_of_elements - 1) / 2) + 1)
+    ):  # we don't need to traverse to end of list as
         for j in range(no_of_elements - 1):
             if (
                 lst[j + 1] < lst[j]
