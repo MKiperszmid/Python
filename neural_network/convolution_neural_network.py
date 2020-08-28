@@ -123,7 +123,9 @@ class CNN:
         for i_map in range(num_conv):
             featuremap = []
             for data_focu in data_focus:
-                net_focus = np.sum(np.multiply(data_focu, w_convs[i_map])) - thre_convs[i_map]
+                net_focus = (
+                    np.sum(np.multiply(data_focu, w_convs[i_map])) - thre_convs[i_map]
+                )
                 featuremap.append(self.sig(net_focus))
             featuremap = np.asmatrix(featuremap).reshape(
                 Size_FeatureMap, Size_FeatureMap

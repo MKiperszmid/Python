@@ -253,8 +253,8 @@ def krusk(E_and_n):
             break
         print(s)
         x = E.pop()
-        for item in s:
-            if x[0] in item:
+        for i in range(len(s)):
+            if x[0] in s[i]:
                 break
         for j in range(len(s)):
             if x[1] in s[j]:

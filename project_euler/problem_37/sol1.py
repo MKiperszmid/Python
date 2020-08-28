@@ -10,7 +10,6 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
 
 
-
 from typing import List
 
 seive = [True] * 1000001

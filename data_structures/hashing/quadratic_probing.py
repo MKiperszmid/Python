@@ -2,7 +2,6 @@
 
 from hash_table import HashTable
 
-
 class QuadraticProbing(HashTable):
     """
         Basic Hash Table example with open addressing using Quadratic Probing
@@ -22,7 +21,6 @@ class QuadraticProbing(HashTable):
                 if not self.balanced_factor() >= self.lim_charge
                 else None
             )
-
 
             if new_key is None:
                 break
