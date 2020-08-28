@@ -18,9 +18,9 @@ class QuadraticProbing(HashTable):
         while self.values[new_key] is not None and self.values[new_key] != key:
             i += 1
             new_key = (
-                    self.hash_function(key + i ** 2)
-                    if not self.balanced_factor() >= self.lim_charge
-                    else None
+                self.hash_function(key + i ** 2)
+                if not self.balanced_factor() >= self.lim_charge
+                else None
             )
 
             if new_key is None:
