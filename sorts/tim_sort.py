@@ -54,14 +54,12 @@ def tim_sort(lst):
     runs, sorted_runs = [], []
     new_run = [lst[0]]
     sorted_array = []
-    i = 1
-    while i < length:
+    for i in range(1, length):
         if lst[i] < lst[i - 1]:
             runs.append(new_run)
             new_run = [lst[i]]
         else:
             new_run.append(lst[i])
-        i += 1
     runs.append(new_run)
 
     for run in runs:

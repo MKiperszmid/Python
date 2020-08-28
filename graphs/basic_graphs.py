@@ -5,10 +5,7 @@ if __name__ == "__main__":
     n, m = map(int, input().split(" "))
 
     # Initialising Dictionary of edges
-    g = {}
-    for i in range(n):
-        g[i + 1] = []
-
+    g = {i + 1: [] for i in range(n)}
     """
     ----------------------------------------------------------------------------
         Accepting edges of Unweighted Directed Graphs
@@ -106,19 +103,18 @@ def dijk(G, s):
         if len(known) == len(G) - 1:
             break
         mini = 100000
-        for i in dist:
-            if i not in known and dist[i] < mini:
+        for i, value_ in dist.items():
+            if i not in known and value_ < mini:
                 mini = dist[i]
                 u = i
         known.add(u)
         for v in G[u]:
-            if v[0] not in known:
-                if dist[u] + v[1] < dist.get(v[0], 100000):
-                    dist[v[0]] = dist[u] + v[1]
-                    path[v[0]] = u
-    for i in dist:
+            if v[0] not in known and dist[u] + v[1] < dist.get(v[0], 100000):
+                dist[v[0]] = dist[u] + v[1]
+                path[v[0]] = u
+    for i, value in dist.items():
         if i != s:
-            print(dist[i])
+            print(value)
 
 
 """
@@ -160,9 +156,7 @@ def topo(G, ind=None, Q=None):
 
 def adjm():
     n = input().strip()
-    a = []
-    for i in range(n):
-        a.append(map(int, input().strip().split()))
+    a = [map(int, input().strip().split()) for _ in range(n)]
     return a, n
 
 
@@ -210,16 +204,15 @@ def prim(G, s):
         if len(known) == len(G) - 1:
             break
         mini = 100000
-        for i in dist:
-            if i not in known and dist[i] < mini:
+        for i, value in dist.items():
+            if i not in known and value < mini:
                 mini = dist[i]
                 u = i
         known.add(u)
         for v in G[u]:
-            if v[0] not in known:
-                if v[1] < dist.get(v[0], 100000):
-                    dist[v[0]] = v[1]
-                    path[v[0]] = u
+            if v[0] not in known and v[1] < dist.get(v[0], 100000):
+                dist[v[0]] = v[1]
+                path[v[0]] = u
     return dist
 
 
@@ -236,9 +229,7 @@ def prim(G, s):
 
 def edglist():
     n, m = map(int, input().split(" "))
-    edges = []
-    for i in range(m):
-        edges.append(map(int, input().split(" ")))
+    edges = [map(int, input().split(" ")) for _ in range(m)]
     return edges, n
 
 
@@ -262,8 +253,8 @@ def krusk(E_and_n):
             break
         print(s)
         x = E.pop()
-        for i in range(len(s)):
-            if x[0] in s[i]:
+        for item in s:
+            if x[0] in item:
                 break
         for j in range(len(s)):
             if x[1] in s[j]:
@@ -276,8 +267,4 @@ def krusk(E_and_n):
 
 # find the isolated node in the graph
 def find_isolated_nodes(graph):
-    isolated = []
-    for node in graph:
-        if not graph[node]:
-            isolated.append(node)
-    return isolated
+    return [node for node in graph if not graph[node]]

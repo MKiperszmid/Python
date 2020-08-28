@@ -128,7 +128,7 @@ class BPNN:
         self.ax_loss.hlines(self.accuracy, 0, self.train_round * 1.1)
 
         x_shape = np.shape(xdata)
-        for round_i in range(train_round):
+        for _ in range(train_round):
             all_loss = 0
             for row in range(x_shape[0]):
                 _xdata = np.asmatrix(xdata[row, :]).T
@@ -139,7 +139,7 @@ class BPNN:
                     _xdata = layer.forward_propagation(_xdata)
 
                 loss, gradient = self.cal_loss(_ydata, _xdata)
-                all_loss = all_loss + loss
+                all_loss += loss
 
                 # back propagation: the input_layer does not upgrade
                 for layer in self.layers[:0:-1]:

@@ -41,12 +41,10 @@ def solution(n):
     f1, f2 = 1, 1
     index = 2
     while True:
-        i = 0
         f = f1 + f2
         f1, f2 = f2, f
         index += 1
-        for j in str(f):
-            i += 1
+        i = sum(1 for _ in str(f))
         if i == n:
             break
     return index

@@ -295,7 +295,7 @@ class AVLtree:
                 q.push(node.get_left())
                 q.push(node.get_right())
             output += space
-            cnt = cnt + 1
+            cnt += 1
             for i in range(100):
                 if cnt == math.pow(2, i) - 1:
                     layer = layer - 1

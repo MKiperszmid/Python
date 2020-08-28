@@ -28,7 +28,7 @@ def fib(a, b, n):
         return str(a) + str(b)
 
     temp = 0
-    for x in range(2, n):
+    for _ in range(2, n):
         c = str(a) + str(b)
         temp = b
         b = c
@@ -39,7 +39,7 @@ def fib(a, b, n):
 def solution(n):
     """Returns the sum of all semidivisible numbers not exceeding n."""
     semidivisible = []
-    for x in range(n):
+    for _ in range(n):
         l = [i for i in input().split()]  # noqa: E741
         c2 = 1
         while 1:

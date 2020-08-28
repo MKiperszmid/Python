@@ -21,21 +21,18 @@ class things:
 
 
 def build_menu(name, value, weight):
-    menu = []
-    for i in range(len(value)):
-        menu.append(things(name[i], value[i], weight[i]))
-    return menu
+    return [things(name[i], value[i], weight[i]) for i in range(len(value))]
 
 
 def greedy(item, maxCost, keyFunc):
     itemsCopy = sorted(item, key=keyFunc, reverse=True)
     result = []
     totalValue, total_cost = 0.0, 0.0
-    for i in range(len(itemsCopy)):
-        if (total_cost + itemsCopy[i].get_weight()) <= maxCost:
-            result.append(itemsCopy[i])
-            total_cost += itemsCopy[i].get_weight()
-            totalValue += itemsCopy[i].get_value()
+    for item_ in itemsCopy:
+        if total_cost + item_.get_weight() <= maxCost:
+            result.append(item_)
+            total_cost += item_.get_weight()
+            totalValue += item_.get_value()
     return (result, totalValue)
 
 

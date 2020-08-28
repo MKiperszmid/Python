@@ -13,13 +13,12 @@ def check_pangram(
     >>> check_pangram("The quick brown fox jumps over the la_y dog")
     False
     """
-    frequency = set()
     input_str = input_str.replace(
         " ", ""
     )  # Replacing all the Whitespaces in our sentence
-    for alpha in input_str:
-        if "a" <= alpha.lower() <= "z":
-            frequency.add(alpha.lower())
+    frequency = {
+        alpha.lower() for alpha in input_str if "a" <= alpha.lower() <= "z"
+    }
 
     return True if len(frequency) == 26 else False
 

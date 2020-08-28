@@ -14,9 +14,7 @@ def solution():
     >>> solution()
     '9110846700'
     """
-    total = 0
-    for i in range(1, 1001):
-        total += i ** i
+    total = sum(i ** i for i in range(1, 1001))
     return str(total)[-10:]
 
 

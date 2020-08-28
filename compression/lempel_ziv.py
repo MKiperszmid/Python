@@ -50,8 +50,8 @@ def compress_data(data_bits: str) -> str:
     result, curr_string = "", ""
     index = len(lexicon)
 
-    for i in range(len(data_bits)):
-        curr_string += data_bits[i]
+    for data_bit in data_bits:
+        curr_string += data_bit
         if curr_string not in lexicon:
             continue
 

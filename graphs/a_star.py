@@ -51,7 +51,7 @@ def search(grid, init, goal, cost, heuristic):
     resign = False  # flag set if we can't find expand
 
     while not found and not resign:
-        if len(cell) == 0:
+        if not cell:
             return "FAIL"
         else:  # to choose the least costliest action so as to move closer to the goal
             cell.sort()
@@ -67,13 +67,19 @@ def search(grid, init, goal, cost, heuristic):
                 for i in range(len(delta)):  # to try out different valid actions
                     x2 = x + delta[i][0]
                     y2 = y + delta[i][1]
-                    if x2 >= 0 and x2 < len(grid) and y2 >= 0 and y2 < len(grid[0]):
-                        if closed[x2][y2] == 0 and grid[x2][y2] == 0:
-                            g2 = g + cost
-                            f2 = g2 + heuristic[x2][y2]
-                            cell.append([f2, g2, x2, y2])
-                            closed[x2][y2] = 1
-                            action[x2][y2] = i
+                    if (
+                        x2 >= 0
+                        and x2 < len(grid)
+                        and y2 >= 0
+                        and y2 < len(grid[0])
+                        and closed[x2][y2] == 0
+                        and grid[x2][y2] == 0
+                    ):
+                        g2 = g + cost
+                        f2 = g2 + heuristic[x2][y2]
+                        cell.append([f2, g2, x2, y2])
+                        closed[x2][y2] = 1
+                        action[x2][y2] = i
     invpath = []
     x = goal[0]
     y = goal[1]
@@ -85,16 +91,14 @@ def search(grid, init, goal, cost, heuristic):
         y = y2
         invpath.append([x, y])
 
-    path = []
-    for i in range(len(invpath)):
-        path.append(invpath[len(invpath) - 1 - i])
+    path = [invpath[len(invpath) - 1 - i] for i in range(len(invpath))]
     print("ACTION MAP")
-    for i in range(len(action)):
-        print(action[i])
+    for item in action:
+        print(item)
 
     return path
 
 
 a = search(grid, init, goal, cost, heuristic)
-for i in range(len(a)):
-    print(a[i])
+for item in a:
+    print(item)

@@ -1,7 +1,7 @@
 class FenwickTree:
     def __init__(self, SIZE):  # create fenwick tree with size SIZE
         self.Size = SIZE
-        self.ft = [0 for i in range(0, SIZE)]
+        self.ft = [0 for i in range(SIZE)]
 
     def update(self, i, val):  # update data (adding) in index i in O(lg N)
         while i < self.Size:

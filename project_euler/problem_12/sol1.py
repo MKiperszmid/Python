@@ -25,10 +25,7 @@ from math import sqrt
 
 
 def count_divisors(n):
-    nDivisors = 0
-    for i in range(1, int(sqrt(n)) + 1):
-        if n % i == 0:
-            nDivisors += 2
+    nDivisors = sum(2 for i in range(1, int(sqrt(n)) + 1) if n % i == 0)
     # check if n is perfect square
     if n ** 0.5 == int(n ** 0.5):
         nDivisors -= 1

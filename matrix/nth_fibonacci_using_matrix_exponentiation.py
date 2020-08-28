@@ -22,9 +22,7 @@ def multiply(matrix_a, matrix_b):
     for i in range(n):
         list_1 = []
         for j in range(n):
-            val = 0
-            for k in range(n):
-                val = val + matrix_a[i][k] * matrix_b[k][j]
+            val = sum(matrix_a[i][k] * matrix_b[k][j] for k in range(n))
             list_1.append(val)
         matrix_c.append(list_1)
     return matrix_c
@@ -65,7 +63,7 @@ def nth_fibonacci_bruteforce(n):
         return n
     fib0 = 0
     fib1 = 1
-    for i in range(2, n + 1):
+    for _ in range(2, n + 1):
         fib0, fib1 = fib1, fib0 + fib1
     return fib1
 

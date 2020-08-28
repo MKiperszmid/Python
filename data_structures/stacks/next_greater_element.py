@@ -60,7 +60,7 @@ def next_greatest_element(arr: list) -> list:
         if len(stack):
             while stack[-1] <= arr[index]:
                 stack.pop()
-                if len(stack) == 0:
+                if not stack:
                     break
 
         if len(stack) != 0:

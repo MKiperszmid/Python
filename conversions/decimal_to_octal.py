@@ -17,10 +17,10 @@ def decimal_to_octal(num: int) -> str:
     counter = 0
     while num > 0:
         remainder = num % 8
-        octal = octal + (remainder * math.pow(10, counter))
+        octal += remainder * math.pow(10, counter)
         counter += 1
         num = math.floor(num / 8)  # basically /= 8 without remainder if any
-        # This formatting removes trailing '.0' from `octal`.
+            # This formatting removes trailing '.0' from `octal`.
     return f"0o{int(octal)}"
 
 

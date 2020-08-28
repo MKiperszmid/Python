@@ -71,8 +71,7 @@ def heuristic_1(P, goal):
 
 
 def key(start, i, goal, g_function):
-    ans = g_function[start] + W1 * heuristics[i](start, goal)
-    return ans
+    return g_function[start] + W1 * heuristics[i](start, goal)
 
 
 def do_something(back_pointer, goal, start):
@@ -120,9 +119,7 @@ def do_something(back_pointer, goal, start):
 def valid(p):
     if p[0] < 0 or p[0] > n - 1:
         return False
-    if p[1] < 0 or p[1] > n - 1:
-        return False
-    return True
+    return p[1] >= 0 and p[1] <= n - 1
 
 
 def expand_state(

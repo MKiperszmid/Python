@@ -38,9 +38,11 @@ def _hypothesis_value(data_input_tuple):
     It is not explicitly mentioned in input data.. But, ML hypothesis functions use it.
     So, we have to take care of it separately. Line 36 takes care of it.
     """
-    hyp_val = 0
-    for i in range(len(parameter_vector) - 1):
-        hyp_val += data_input_tuple[i] * parameter_vector[i + 1]
+    hyp_val = sum(
+        data_input_tuple[i] * parameter_vector[i + 1]
+        for i in range(len(parameter_vector) - 1)
+    )
+
     hyp_val += parameter_vector[0]
     return hyp_val
 
@@ -95,8 +97,7 @@ def get_cost_derivative(index):
     Note: If index is -1, this means we are calculating summation wrt to biased
         parameter.
     """
-    cost_derivative_value = summation_of_cost_derivative(index, m) / m
-    return cost_derivative_value
+    return summation_of_cost_derivative(index, m) / m
 
 
 def run_gradient_descent():
@@ -108,7 +109,7 @@ def run_gradient_descent():
     while True:
         j += 1
         temp_parameter_vector = [0, 0, 0, 0]
-        for i in range(0, len(parameter_vector)):
+        for i in range(len(parameter_vector)):
             cost_derivative = get_cost_derivative(i - 1)
             temp_parameter_vector[i] = (
                 parameter_vector[i] - LEARNING_RATE * cost_derivative

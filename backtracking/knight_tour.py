@@ -43,7 +43,7 @@ def is_complete(board: List[List[int]]) -> bool:
     False
     """
 
-    return not any(elem == 0 for row in board for elem in row)
+    return all(elem != 0 for row in board for elem in row)
 
 
 def open_knight_tour_helper(board: List[List[int]], pos: Tuple[int], curr: int) -> bool:

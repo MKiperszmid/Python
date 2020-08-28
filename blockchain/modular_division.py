@@ -28,8 +28,7 @@ def modular_division(a, b, n):
     """
     assert n > 1 and a > 0 and greatest_common_divisor(a, n) == 1
     (d, t, s) = extended_gcd(n, a)  # Implemented below
-    x = (b * s) % n
-    return x
+    return (b * s) % n
 
 
 # This function find the inverses of a i.e., a^(-1)
@@ -64,8 +63,7 @@ def modular_division2(a, b, n):
 
     """
     s = invert_modulo(a, n)
-    x = (b * s) % n
-    return x
+    return (b * s) % n
 
 
 # Extended Euclid's Algorithm : If d divides a and b and d = a*x + b*y for integers x

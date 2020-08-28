@@ -15,7 +15,7 @@ def BellmanFord(graph: List[Dict[str, int]], V: int, E: int, src: int) -> int:
     mdist = [float("inf") for i in range(V)]
     mdist[src] = 0.0
 
-    for i in range(V - 1):
+    for _ in range(V - 1):
         for j in range(E):
             u = graph[j]["src"]
             v = graph[j]["dst"]

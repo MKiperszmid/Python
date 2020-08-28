@@ -45,11 +45,7 @@ def prime_sum(n: int) -> int:
         if list_[i] == 0:
             for j in range(i * i, n + 1, i):
                 list_[j] = 1
-    s = 0
-    for i in range(n):
-        if list_[i] == 0:
-            s += i
-    return s
+    return sum(i for i in range(n) if list_[i] == 0)
 
 
 if __name__ == "__main__":

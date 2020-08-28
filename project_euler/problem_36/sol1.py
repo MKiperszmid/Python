@@ -14,10 +14,7 @@ leading zeros.)
 def is_palindrome(n):
     n = str(n)
 
-    if n == n[::-1]:
-        return True
-    else:
-        return False
+    return n == n[::-1]
 
 
 def solution(n):

@@ -34,12 +34,7 @@ def solution(n):
         if a[i + 2] > n:
             break
         i += 1
-    sum = 0
-    for j in range(len(a) - 1):
-        if a[j] % 2 == 0:
-            sum += a[j]
-
-    return sum
+    return sum(a[j] for j in range(len(a) - 1) if a[j] % 2 == 0)
 
 
 if __name__ == "__main__":

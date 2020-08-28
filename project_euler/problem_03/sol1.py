@@ -14,10 +14,7 @@ def isprime(no):
     elif no % 2 == 0:
         return False
     sq = int(math.sqrt(no)) + 1
-    for i in range(3, sq, 2):
-        if no % i == 0:
-            return False
-    return True
+    return all(no % i != 0 for i in range(3, sq, 2))
 
 
 def solution(n):
@@ -59,7 +56,7 @@ def solution(n):
         return n
     else:
         while n % 2 == 0:
-            n = n / 2
+            n /= 2
         if isprime(n):
             return int(n)
         else:

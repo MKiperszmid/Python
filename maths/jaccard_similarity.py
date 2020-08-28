@@ -54,11 +54,7 @@ def jaccard_similariy(setA, setB, alternativeUnion=False):
 
         intersection = len(setA.intersection(setB))
 
-        if alternativeUnion:
-            union = len(setA) + len(setB)
-        else:
-            union = len(setA.union(setB))
-
+        union = len(setA) + len(setB) if alternativeUnion else len(setA.union(setB))
         return intersection / union
 
     if isinstance(setA, (list, tuple)) and isinstance(setB, (list, tuple)):

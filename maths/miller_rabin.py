@@ -32,7 +32,7 @@ def is_prime(n, prec=1000):
         b = bin_exp_mod(a, d, n)
         if b != 1:
             flag = True
-            for i in range(exp):
+            for _ in range(exp):
                 if b == n - 1:
                     flag = False
                     break

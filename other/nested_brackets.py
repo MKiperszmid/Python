@@ -21,15 +21,13 @@ def is_balanced(S):
     closed_brackets = set({")", "]", "}"})
     open_to_closed = dict({"{": "}", "[": "]", "(": ")"})
 
-    for i in range(len(S)):
+    for item in S:
 
-        if S[i] in open_brackets:
-            stack.append(S[i])
+        if item in open_brackets:
+            stack.append(item)
 
-        elif S[i] in closed_brackets:
-            if len(stack) == 0 or (
-                len(stack) > 0 and open_to_closed[stack.pop()] != S[i]
-            ):
+        elif item in closed_brackets:
+            if not stack or open_to_closed[stack.pop()] != item:
                 return False
 
     return len(stack) == 0

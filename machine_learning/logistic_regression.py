@@ -51,8 +51,8 @@ def logistic_reg(alpha, X, y, max_iterations=70000):
         theta = theta - alpha * gradient  # updating the weights
         z = np.dot(X, theta)
         h = sigmoid_function(z)
-        J = cost_function(h, y)
         if iterations % 100 == 0:
+            J = cost_function(h, y)
             print(f"loss: {J} \t")  # printing the loss after every 100 iterations
     return theta
 

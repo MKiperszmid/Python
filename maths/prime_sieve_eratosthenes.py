@@ -27,9 +27,9 @@ def prime_sieve_eratosthenes(num):
     primes = [True for i in range(num + 1)]
     p = 2
 
-    while p * p <= num:
+    while p ** 2 <= num:
         if primes[p]:
-            for i in range(p * p, num + 1, p):
+            for i in range(p**2, num + 1, p):
                 primes[i] = False
         p += 1
 

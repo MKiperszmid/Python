@@ -32,10 +32,10 @@ def is_substring_divisible(num: tuple) -> bool:
     True
     """
     tests = [2, 3, 5, 7, 11, 13, 17]
-    for i, test in enumerate(tests):
-        if (num[i + 1] * 100 + num[i + 2] * 10 + num[i + 3]) % test != 0:
-            return False
-    return True
+    return all(
+        (num[i + 1] * 100 + num[i + 2] * 10 + num[i + 3]) % test == 0
+        for i, test in enumerate(tests)
+    )
 
 
 def compute_sum(n: int = 10) -> int:

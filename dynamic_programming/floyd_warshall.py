@@ -15,8 +15,8 @@ class Graph:
         self.dp[u][v] = w
 
     def floyd_warshall(self):
-        for k in range(0, self.N):
-            for i in range(0, self.N):
+        for k in range(self.N):
+            for i in range(self.N):
                 for j in range(0, self.N):
                     self.dp[i][j] = min(self.dp[i][j], self.dp[i][k] + self.dp[k][j])
 

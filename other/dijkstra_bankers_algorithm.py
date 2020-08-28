@@ -160,11 +160,11 @@ class BankersAlgorithm:
         while need_list:
             safe = False
             for each_need in need_list:
-                execution = True
-                for index, need in enumerate(each_need):
-                    if need > available_resources[index]:
-                        execution = False
-                        break
+                execution = all(
+                    need <= available_resources[index]
+                    for index, need in enumerate(each_need)
+                )
+
                 if execution:
                     safe = True
                     # get the original index of the process from ind_ctrl db

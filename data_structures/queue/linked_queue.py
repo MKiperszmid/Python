@@ -52,12 +52,12 @@ class LinkedQueue:
         if self.is_empty():
             # the queue contains just the single element
             self.front = node
-            self.rear = node
         else:
             # not empty, so we add it to the rear of the queue
             assert isinstance(self.rear, Node)
             self.rear.next = node
-            self.rear = node
+
+        self.rear = node
 
     def get(self) -> Any:
         """ returns and removes item at front of queue """

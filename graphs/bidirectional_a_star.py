@@ -229,8 +229,7 @@ class BidirectionalAStar:
         bwd_path = self.bwd_astar.retrace_path(bwd_node)
         bwd_path.pop()
         bwd_path.reverse()
-        path = fwd_path + bwd_path
-        return path
+        return fwd_path + bwd_path
 
 
 if __name__ == "__main__":

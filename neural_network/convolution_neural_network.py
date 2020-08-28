@@ -122,11 +122,8 @@ class CNN:
         Size_FeatureMap = int((size_data - size_conv) / conv_step + 1)
         for i_map in range(num_conv):
             featuremap = []
-            for i_focus in range(len(data_focus)):
-                net_focus = (
-                    np.sum(np.multiply(data_focus[i_focus], w_convs[i_map]))
-                    - thre_convs[i_map]
-                )
+            for data_focu in data_focus:
+                net_focus = np.sum(np.multiply(data_focu, w_convs[i_map])) - thre_convs[i_map]
                 featuremap.append(self.sig(net_focus))
             featuremap = np.asmatrix(featuremap).reshape(
                 Size_FeatureMap, Size_FeatureMap
@@ -145,8 +142,8 @@ class CNN:
         size_map = len(featuremaps[0])
         size_pooled = int(size_map / size_pooling)
         featuremap_pooled = []
-        for i_map in range(len(featuremaps)):
-            map = featuremaps[i_map]
+        for featuremap in featuremaps:
+            map = featuremap
             map_pooled = []
             for i_focus in range(0, size_map, size_pooling):
                 for j_focus in range(0, size_map, size_pooling):
@@ -167,9 +164,9 @@ class CNN:
     def _expand(self, data):
         # expanding three dimension data to one dimension list
         data_expanded = []
-        for i in range(len(data)):
-            shapes = np.shape(data[i])
-            data_listed = data[i].reshape(1, shapes[0] * shapes[1])
+        for datum in data:
+            shapes = np.shape(datum)
+            data_listed = datum.reshape(1, shapes[0] * shapes[1])
             data_listed = data_listed.getA().tolist()[0]
             data_expanded.extend(data_listed)
         data_expanded = np.asarray(data_expanded)
@@ -179,8 +176,7 @@ class CNN:
         # expanding matrix to one dimension list
         data_mat = np.asarray(data_mat)
         shapes = np.shape(data_mat)
-        data_expanded = data_mat.reshape(1, shapes[0] * shapes[1])
-        return data_expanded
+        return data_mat.reshape(1, shapes[0] * shapes[1])
 
     def _calculate_gradient_from_pool(
         self, out_map, pd_pool, num_map, size_map, size_pooling
@@ -200,7 +196,7 @@ class CNN:
                     pd_conv1[i : i + size_pooling, j : j + size_pooling] = pd_pool[
                         i_pool
                     ]
-                    i_pool = i_pool + 1
+                    i_pool += 1
             pd_conv2 = np.multiply(
                 pd_conv1, np.multiply(out_map[i_map], (1 - out_map[i_map]))
             )
@@ -313,8 +309,8 @@ class CNN:
         produce_out = []
         print("-------------------Start Testing-------------------------")
         print((" - - Shape: Test_Data  ", np.shape(datas_test)))
-        for p in range(len(datas_test)):
-            data_test = np.asmatrix(datas_test[p])
+        for item in datas_test:
+            data_test = np.asmatrix(item)
             data_focus1, data_conved1 = self.convolute(
                 data_test,
                 self.conv1,

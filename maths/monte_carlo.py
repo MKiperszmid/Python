@@ -109,7 +109,7 @@ def pi_estimator_using_area_under_curve(iterations: int) -> None:
         >>> [function_to_integrate(x) for x in [-2.0, 0.0, 2.0]]
         [0.0, 2.0, 0.0]
         """
-        return sqrt(4.0 - x * x)
+        return sqrt(4.0 - x**2)
 
     estimated_value = area_under_curve_estimator(
         iterations, function_to_integrate, 0.0, 2.0

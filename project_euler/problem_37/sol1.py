@@ -10,14 +10,15 @@ NOTE: 2, 3, 5, and 7 are not considered to be truncatable primes.
 """
 
 
+
 from typing import List
 
 seive = [True] * 1000001
 seive[1] = False
 i = 2
-while i * i <= 1000000:
+while i ** 2 <= 1000000:
     if seive[i]:
-        for j in range(i * i, 1000001, i):
+        for j in range(i**2, 1000001, i):
             seive[j] = False
     i += 1
 
@@ -65,10 +66,11 @@ def validate(n: int) -> bool:
     >>> validate(3797)
     True
     """
-    if len(str(n)) > 3:
-        if not is_prime(int(str(n)[-3:])) or not is_prime(int(str(n)[:3])):
-            return False
-    return True
+    return bool(
+        len(str(n)) <= 3
+        or is_prime(int(str(n)[-3:]))
+        and is_prime(int(str(n)[:3]))
+    )
 
 
 def compute_truncated_primes(count: int = 11) -> List[int]:

@@ -23,7 +23,7 @@ def prime_check(number):
     # Except 2, all primes are odd. If any odd value divide
     # the number, then that number is not prime.
     odd_numbers = range(3, int(math.sqrt(number)) + 1, 2)
-    return not any(number % i == 0 for i in odd_numbers)
+    return all(number % i != 0 for i in odd_numbers)
 
 
 class Test(unittest.TestCase):

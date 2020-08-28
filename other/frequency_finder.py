@@ -82,17 +82,14 @@ def getFrequencyOrder(message):
         else:
             freqToLetter[letterToFreq[letter]].append(letter)
 
-    for freq in freqToLetter:
-        freqToLetter[freq].sort(key=ETAOIN.find, reverse=True)
+    for freq, value in freqToLetter.items():
+        value.sort(key=ETAOIN.find, reverse=True)
         freqToLetter[freq] = "".join(freqToLetter[freq])
 
     freqPairs = list(freqToLetter.items())
     freqPairs.sort(key=getItemAtIndexZero, reverse=True)
 
-    freqOrder = []
-    for freqPair in freqPairs:
-        freqOrder.append(freqPair[1])
-
+    freqOrder = [freqPair[1] for freqPair in freqPairs]
     return "".join(freqOrder)
 
 
@@ -102,10 +99,9 @@ def englishFreqMatchScore(message):
     1
     """
     freqOrder = getFrequencyOrder(message)
-    matchScore = 0
-    for commonLetter in ETAOIN[:6]:
-        if commonLetter in freqOrder[:6]:
-            matchScore += 1
+    matchScore = sum(
+        1 for commonLetter in ETAOIN[:6] if commonLetter in freqOrder[:6]
+    )
 
     for uncommonLetter in ETAOIN[-6:]:
         if uncommonLetter in freqOrder[-6:]:

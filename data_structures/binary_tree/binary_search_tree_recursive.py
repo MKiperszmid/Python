@@ -124,9 +124,9 @@ class BinarySearchTree:
         node = self.search(label)
         if not node.right and not node.left:
             self._reassign_nodes(node, None)
-        elif not node.right and node.left:
+        elif not node.right:
             self._reassign_nodes(node, node.left)
-        elif node.right and not node.left:
+        elif not node.left:
             self._reassign_nodes(node, node.right)
         else:
             lowest_node = self._get_lowest_node(node.right)
@@ -154,8 +154,7 @@ class BinarySearchTree:
             lowest_node = self._get_lowest_node(node.left)
         else:
             lowest_node = node
-            self._reassign_nodes(node, node.right)
-
+            self._reassign_nodes(lowest_node, lowest_node.right)
         return lowest_node
 
     def exists(self, label: int) -> bool:

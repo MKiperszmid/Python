@@ -44,7 +44,7 @@ def valid_connection(
         return False
 
     # 2. Validate that next vertex is not already in path
-    return not any(vertex == next_ver for vertex in path)
+    return not next_ver in path
 
 
 def util_hamilton_cycle(graph: List[List[int]], path: List[int], curr_ind: int) -> bool:
@@ -96,7 +96,7 @@ def util_hamilton_cycle(graph: List[List[int]], path: List[int], curr_ind: int) 
         return graph[path[curr_ind - 1]][path[0]] == 1
 
     # Recursive Step
-    for next in range(0, len(graph)):
+    for next in range(len(graph)):
         if valid_connection(graph, next, curr_ind, path):
             # Insert current vertex  into path as next transition
             path[curr_ind] = next

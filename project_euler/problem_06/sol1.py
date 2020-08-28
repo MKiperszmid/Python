@@ -33,8 +33,7 @@ def solution(n):
     for i in range(1, n + 1):
         suma += i ** 2
         sumb += i
-    sum = sumb ** 2 - suma
-    return sum
+    return sumb ** 2 - suma
 
 
 if __name__ == "__main__":

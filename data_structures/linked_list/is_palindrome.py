@@ -55,7 +55,7 @@ def is_palindrome_dict(head):
     d = {}
     pos = 0
     while head:
-        if head.val in d.keys():
+        if head.val in d:
             d[head.val].append(pos)
         else:
             d[head.val] = [pos]
@@ -67,11 +67,9 @@ def is_palindrome_dict(head):
         if len(v) % 2 != 0:
             middle += 1
         else:
-            step = 0
-            for i in range(0, len(v)):
-                if v[i] + v[len(v) - 1 - step] != checksum:
+            for step, item in enumerate(v):
+                if item + v[len(v) - 1 - step] != checksum:
                     return False
-                step += 1
         if middle > 1:
             return False
     return True
