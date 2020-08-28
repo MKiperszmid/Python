@@ -15,7 +15,7 @@ def quick_sort_3partition(sorting, left, right):
         else:
             i += 1
     quick_sort_3partition(sorting, left, a - 1)
-    quick_sort_3partition(sorting, b + 1, right)
+    quick_sort_3partition(sorting, b + 1, b)
 
 
 if __name__ == "__main__":

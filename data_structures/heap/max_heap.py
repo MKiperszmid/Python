@@ -24,7 +24,7 @@ class BinaryHeap:
         """ Swap the element up """
         temporary = self.__heap[i]
         while i // 2 > 0:
-            if self.__heap[i] > self.__heap[i // 2]:
+            if temporary > self.__heap[i // 2]:
                 self.__heap[i] = self.__heap[i // 2]
                 self.__heap[i // 2] = temporary
             i //= 2
@@ -46,7 +46,7 @@ class BinaryHeap:
                 else:
                     bigger_child = 2 * i + 1
             temporary = self.__heap[i]
-            if self.__heap[i] < self.__heap[bigger_child]:
+            if temporary < self.__heap[bigger_child]:
                 self.__heap[i] = self.__heap[bigger_child]
                 self.__heap[bigger_child] = temporary
             i = bigger_child

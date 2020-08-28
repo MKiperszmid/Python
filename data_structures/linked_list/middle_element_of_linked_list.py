@@ -47,7 +47,7 @@ class LinkedList:
         """
         slow_pointer = self.head
         fast_pointer = self.head
-        if self.head:
+        if fast_pointer:
             while fast_pointer and fast_pointer.next:
                 fast_pointer = fast_pointer.next.next
                 slow_pointer = slow_pointer.next
@@ -58,7 +58,7 @@ class LinkedList:
 
 if __name__ == "__main__":
     link = LinkedList()
-    for i in range(int(input().strip())):
+    for _ in range(int(input().strip())):
         data = int(input().strip())
         link.push(data)
     print(link.middle_element())

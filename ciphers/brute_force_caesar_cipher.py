@@ -37,9 +37,9 @@ def decrypt(message):
                 num = num - key
                 if num < 0:
                     num = num + len(LETTERS)
-                translated = translated + LETTERS[num]
+                translated += LETTERS[num]
             else:
-                translated = translated + symbol
+                translated += symbol
         print(f"Decryption using Key #{key}: {translated}")
 
 

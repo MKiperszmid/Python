@@ -43,7 +43,7 @@ def solution(n):
         raise ValueError("Parameter n must be greater or equal to one.")
     prime = 1
     i = 2
-    while i * i <= n:
+    while i ** 2 <= n:
         while n % i == 0:
             prime = i
             n //= i

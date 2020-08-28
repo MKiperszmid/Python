@@ -68,7 +68,7 @@ class DirectedGraph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return visited
 
     # c is the count of nodes you want and if you leave it or pass -1 to the function
@@ -140,7 +140,7 @@ class DirectedGraph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return sorted_nodes
 
     def cycle_nodes(self):
@@ -193,7 +193,7 @@ class DirectedGraph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return list(anticipating_nodes)
 
     def has_cycle(self):
@@ -226,8 +226,6 @@ class DirectedGraph:
                                 break
                             else:
                                 return True
-                                anticipating_nodes.add(stack[len_stack_minus_one])
-                                len_stack_minus_one -= 1
                     if visited.count(node[1]) < 1:
                         stack.append(node[1])
                         visited.append(node[1])
@@ -247,7 +245,7 @@ class DirectedGraph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return False
 
     def dfs_time(self, s=-2, e=-1):
@@ -336,7 +334,7 @@ class Graph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return visited
 
     # c is the count of nodes you want and if you leave it or pass -1 to the function
@@ -420,7 +418,7 @@ class Graph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return list(anticipating_nodes)
 
     def has_cycle(self):
@@ -453,8 +451,6 @@ class Graph:
                                 break
                             else:
                                 return True
-                                anticipating_nodes.add(stack[len_stack_minus_one])
-                                len_stack_minus_one -= 1
                     if visited.count(node[1]) < 1:
                         stack.append(node[1])
                         visited.append(node[1])
@@ -474,7 +470,7 @@ class Graph:
                 s = ss
 
             # check if se have reached the starting point
-            if len(stack) == 0:
+            if not stack:
                 return False
 
     def all_nodes(self):

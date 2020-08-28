@@ -139,9 +139,9 @@ def calculate_variance(items: list, means: list, total_count: int) -> float:
     # iterate over number of elements in items
     for i in range(len(items)):
         # for loop iterates over number of elements in inner layer of items
-        for j in range(len(items[i])):
+        for item in items[i]:
             # appending squared differences to 'squared_diff' list
-            squared_diff.append((items[i][j] - means[i]) ** 2)
+            squared_diff.append((item - means[i])**2)
 
     # one divided by (the number of all instances - number of classes) multiplied by
     # sum of all squared differences

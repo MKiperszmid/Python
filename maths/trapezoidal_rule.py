@@ -33,8 +33,7 @@ def make_points(a, b, h):
 
 
 def f(x):  # enter your function here
-    y = (x - 0) * (x - 0)
-    return y
+    return (x - 0) * (x - 0)
 
 
 def main():

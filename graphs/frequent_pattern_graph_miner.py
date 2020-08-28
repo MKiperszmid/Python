@@ -161,10 +161,8 @@ def construct_graph(cluster, nodes):
             graph[tuple(["Header"])] = [X[i]]
     for i in X:
         graph[tuple(X[i])] = [["Header"]]
-    i = 1
-    while i < max(cluster) - 1:
+    for i in range(1, max(cluster) - 1):
         create_edge(nodes, graph, cluster, i)
-        i = i + 1
     return graph
 
 
@@ -213,10 +211,10 @@ def preprocess(edge_array):
     ...              'eg-e2', 'fg-e6', 'gh-e6', 'hi-e3']])
 
     """
-    for i in range(len(edge_array)):
-        for j in range(len(edge_array[i])):
-            t = edge_array[i][j].split("-")
-            edge_array[i][j] = t
+    for item in edge_array:
+        for j in range(len(item)):
+            t = item[j].split("-")
+            item[j] = t
 
 
 if __name__ == "__main__":

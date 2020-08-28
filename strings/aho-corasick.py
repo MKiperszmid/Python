@@ -3,11 +3,7 @@ from collections import deque
 
 class Automaton:
     def __init__(self, keywords):
-        self.adlist = list()
-        self.adlist.append(
-            {"value": "", "next_states": [], "fail_state": 0, "output": []}
-        )
-
+        self.adlist = [{"value": "", "next_states": [], "fail_state": 0, "output": []}]
         for keyword in keywords:
             self.add_keyword(keyword)
         self.set_fail_transitions()

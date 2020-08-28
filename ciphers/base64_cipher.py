@@ -57,15 +57,13 @@ def decode_base64(text):
     p = ""
     if c == "=":
         p = "A"
-    else:
-        if c == "==":
-            p = "AA"
+    elif c == "==":
+        p = "AA"
 
     r = b""
-    s = s + p
+    s += p
 
-    i = 0
-    while i < len(s):
+    for i in range(0, len(s), 4):
         n = (
             (base64_chars.index(s[i]) << 18)
             + (base64_chars.index(s[i + 1]) << 12)
@@ -74,8 +72,6 @@ def decode_base64(text):
         )
 
         r += bytes([(n >> 16) & 255]) + bytes([(n >> 8) & 255]) + bytes([n & 255])
-
-        i += 4
 
     return str(r[0 : len(r) - len(p)], "utf-8")
 

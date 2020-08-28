@@ -12,7 +12,7 @@ def jump_search(arr, x):
             return -1
 
     while arr[prev] < x:
-        prev = prev + 1
+        prev += 1
         if prev == min(step, n):
             return -1
     if arr[prev] == x:

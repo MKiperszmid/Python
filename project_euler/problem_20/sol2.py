@@ -26,7 +26,7 @@ def solution(n):
     >>> solution(1)
     1
     """
-    return sum([int(x) for x in str(factorial(n))])
+    return sum(int(x) for x in str(factorial(n)))
 
 
 if __name__ == "__main__":

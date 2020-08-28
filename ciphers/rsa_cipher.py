@@ -45,9 +45,13 @@ def getBlocksFromText(message, blockSize=DEFAULT_BLOCK_SIZE):
 
     blockInts = []
     for blockStart in range(0, len(messageBytes), blockSize):
-        blockInt = 0
-        for i in range(blockStart, min(blockStart + blockSize, len(messageBytes))):
-            blockInt += messageBytes[i] * (BYTE_SIZE ** (i % blockSize))
+        blockInt = sum(
+            messageBytes[i] * (BYTE_SIZE ** (i % blockSize))
+            for i in range(
+                blockStart, min(blockStart + blockSize, len(messageBytes))
+            )
+        )
+
         blockInts.append(blockInt)
     return blockInts
 
@@ -66,19 +70,14 @@ def getTextFromBlocks(blockInts, messageLength, blockSize=DEFAULT_BLOCK_SIZE):
 
 
 def encryptMessage(message, key, blockSize=DEFAULT_BLOCK_SIZE):
-    encryptedBlocks = []
     n, e = key
 
-    for block in getBlocksFromText(message, blockSize):
-        encryptedBlocks.append(pow(block, e, n))
-    return encryptedBlocks
+    return [pow(block, e, n) for block in getBlocksFromText(message, blockSize)]
 
 
 def decryptMessage(encryptedBlocks, messageLength, key, blockSize=DEFAULT_BLOCK_SIZE):
-    decryptedBlocks = []
     n, d = key
-    for block in encryptedBlocks:
-        decryptedBlocks.append(pow(block, d, n))
+    decryptedBlocks = [pow(block, d, n) for block in encryptedBlocks]
     return getTextFromBlocks(decryptedBlocks, messageLength, blockSize)
 
 

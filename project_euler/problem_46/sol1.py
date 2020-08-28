@@ -15,13 +15,14 @@ What is the smallest odd composite that cannot be written as the sum of a
 prime and twice a square?
 """
 
+
 from typing import List
 
 seive = [True] * 100001
 i = 2
-while i * i <= 100000:
+while i ** 2 <= 100000:
     if seive[i]:
-        for j in range(i * i, 100001, i):
+        for j in range(i**2, 100001, i):
             seive[j] = False
     i += 1
 
@@ -71,15 +72,15 @@ def compute_nums(n: int) -> List[int]:
         raise ValueError("n must be >= 0")
 
     list_nums = []
-    for num in range(len(odd_composites)):
+    for odd_composite in odd_composites:
         i = 0
-        while 2 * i * i <= odd_composites[num]:
-            rem = odd_composites[num] - 2 * i * i
+        while 2 * i * i <= odd_composite:
+            rem = odd_composite - 2 * i * i
             if is_prime(rem):
                 break
             i += 1
         else:
-            list_nums.append(odd_composites[num])
+            list_nums.append(odd_composite)
             if len(list_nums) == n:
                 return list_nums
 

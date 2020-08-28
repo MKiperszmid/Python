@@ -8,11 +8,16 @@ def default_matrix_multiplication(a: List, b: List) -> List:
     """
     if len(a) != 2 or len(a[0]) != 2 or len(b) != 2 or len(b[0]) != 2:
         raise Exception("Matrices are not 2x2")
-    new_matrix = [
-        [a[0][0] * b[0][0] + a[0][1] * b[1][0], a[0][0] * b[0][1] + a[0][1] * b[1][1]],
-        [a[1][0] * b[0][0] + a[1][1] * b[1][0], a[1][0] * b[0][1] + a[1][1] * b[1][1]],
+    return [
+        [
+            a[0][0] * b[0][0] + a[0][1] * b[1][0],
+            a[0][0] * b[0][1] + a[0][1] * b[1][1],
+        ],
+        [
+            a[1][0] * b[0][0] + a[1][1] * b[1][0],
+            a[1][0] * b[0][1] + a[1][1] * b[1][1],
+        ],
     ]
-    return new_matrix
 
 
 def matrix_addition(matrix_a: List, matrix_b: List):
@@ -67,8 +72,8 @@ def matrix_dimensions(matrix: List) -> Tuple[int, int]:
 
 
 def print_matrix(matrix: List) -> None:
-    for i in range(len(matrix)):
-        print(matrix[i])
+    for item in matrix:
+        print(item)
 
 
 def actual_strassen(matrix_a: List, matrix_b: List) -> List:
@@ -129,7 +134,7 @@ def strassen(matrix1: List, matrix2: List) -> List:
 
     # Adding zeros to the matrices so that the arrays dimensions are the same and also
     # power of 2
-    for i in range(0, maxim):
+    for i in range(maxim):
         if i < dimension1[0]:
             for j in range(dimension1[1], maxim):
                 new_matrix1[i].append(0)
@@ -144,7 +149,7 @@ def strassen(matrix1: List, matrix2: List) -> List:
     final_matrix = actual_strassen(new_matrix1, new_matrix2)
 
     # Removing the additional zeros
-    for i in range(0, maxim):
+    for i in range(maxim):
         if i < dimension1[0]:
             for j in range(dimension2[1], maxim):
                 final_matrix[i].pop()

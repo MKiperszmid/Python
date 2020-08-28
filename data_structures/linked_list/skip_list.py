@@ -77,7 +77,7 @@ class SkipList(Generic[KT, VT]):
 
         items = list(self)
 
-        if len(items) == 0:
+        if not items:
             return f"SkipList(level={self.level})"
 
         label_size = max((len(str(item)) for item in items), default=4)
@@ -387,10 +387,7 @@ def test_delete_doesnt_leave_dead_nodes():
 
 def test_iter_always_yields_sorted_values():
     def is_sorted(lst):
-        for item, next_item in zip(lst, lst[1:]):
-            if next_item < item:
-                return False
-        return True
+        return all(next_item >= item for item, next_item in zip(lst, lst[1:]))
 
     skip_list = SkipList()
     for i in range(10):
@@ -406,7 +403,7 @@ def test_iter_always_yields_sorted_values():
 
 
 def pytests():
-    for i in range(100):
+    for _ in range(100):
         # Repeat test 100 times due to the probabilistic nature of skip list
         # random values == random bugs
         test_insert()

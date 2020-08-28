@@ -39,7 +39,7 @@ if __name__ == "__main__":
     g = [[] for i in range(n)]  # graph
     r = [[] for i in range(n)]  # reversed graph
     # input graph data (edges)
-    for i in range(m):
+    for _ in range(m):
         u, v = list(map(int, input().strip().split()))
         g[u].append(v)
         r[v].append(u)

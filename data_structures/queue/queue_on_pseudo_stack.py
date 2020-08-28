@@ -7,8 +7,7 @@ class Queue:
         self.length = 0
 
     def __str__(self):
-        printed = "<" + str(self.stack)[1:-1] + ">"
-        return printed
+        return "<" + str(self.stack)[1:-1] + ">"
 
     """Enqueues {@code item}
     @param item
@@ -36,7 +35,7 @@ class Queue:
         number of times to rotate queue"""
 
     def rotate(self, rotation):
-        for i in range(rotation):
+        for _ in range(rotation):
             temp = self.stack[0]
             self.stack = self.stack[1:]
             self.put(temp)

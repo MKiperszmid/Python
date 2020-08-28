@@ -206,18 +206,19 @@ class SegmentTree(object):
             return self._query_range(node.right, i, j)
 
     def traverse(self):
-        if self.root is not None:
-            queue = Queue()
-            queue.put(self.root)
-            while not queue.empty():
-                node = queue.get()
-                yield node
+        if self.root is None:
+            return
+        queue = Queue()
+        queue.put(self.root)
+        while not queue.empty():
+            node = queue.get()
+            yield node
 
-                if node.left is not None:
-                    queue.put(node.left)
+            if node.left is not None:
+                queue.put(node.left)
 
-                if node.right is not None:
-                    queue.put(node.right)
+            if node.right is not None:
+                queue.put(node.right)
 
 
 if __name__ == "__main__":

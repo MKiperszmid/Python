@@ -208,7 +208,7 @@ def main():
     hill_matrix = []
 
     print("Enter each row of the encryption key with space separated integers")
-    for i in range(N):
+    for _ in range(N):
         row = [int(x) for x in input().split()]
         hill_matrix.append(row)
 

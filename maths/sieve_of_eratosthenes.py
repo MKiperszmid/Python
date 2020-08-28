@@ -35,10 +35,9 @@ def sieve(n):
 
     l = [True] * (n + 1)  # noqa: E741
     prime = []
-    start = 2
     end = int(math.sqrt(n))
 
-    while start <= end:
+    for start in range(2, end + 1):
         # If start is a prime
         if l[start] is True:
             prime.append(start)
@@ -47,8 +46,6 @@ def sieve(n):
             for i in range(start * start, n + 1, start):
                 if l[i] is True:
                     l[i] = False
-
-        start += 1
 
     for j in range(end + 1, n + 1):
         if l[j] is True:

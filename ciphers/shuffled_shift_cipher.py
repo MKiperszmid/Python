@@ -65,8 +65,7 @@ class ShuffledShiftCipher:
         :return: a password of a random length between 10 to 20
         """
         choices = string.ascii_letters + string.digits
-        password = [random.choice(choices) for i in range(random.randint(10, 20))]
-        return password
+        return [random.choice(choices) for i in range(random.randint(10, 20))]
 
     def __make_key_list(self) -> list:
         """

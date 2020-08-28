@@ -9,8 +9,7 @@ Description:
 def BFS(graph, s, t, parent):
     # Return True if there is node that has not iterated.
     visited = [False] * len(graph)
-    queue = []
-    queue.append(s)
+    queue = [s]
     visited[s] = True
 
     while queue:

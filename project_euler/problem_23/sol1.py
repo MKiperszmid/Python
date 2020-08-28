@@ -42,7 +42,7 @@ def solution(limit=28123):
         if sumDivs[n] > n:
             abundants.add(n)
 
-        if not any((n - a in abundants) for a in abundants):
+        if all(n - a not in abundants for a in abundants):
             res += n
 
     return res

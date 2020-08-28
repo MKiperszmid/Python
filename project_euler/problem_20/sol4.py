@@ -26,14 +26,10 @@ def solution(n):
     1
     """
     fact = 1
-    result = 0
     for i in range(1, n + 1):
         fact *= i
 
-    for j in str(fact):
-        result += int(j)
-
-    return result
+    return sum(int(j) for j in str(fact))
 
 
 if __name__ == "__main__":

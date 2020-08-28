@@ -21,7 +21,7 @@ def stooge(arr, i, h):
         arr[i], arr[h] = arr[h], arr[i]
 
     # If there are more than 2 elements in the array
-    if h - i + 1 > 2:
+    if h - i > 1:
         t = (int)((h - i + 1) / 3)
 
         # Recursively sort first 2/3 elements

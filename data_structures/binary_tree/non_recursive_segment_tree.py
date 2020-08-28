@@ -78,7 +78,7 @@ class SegmentTree:
         p += self.N
         self.st[p] = v
         while p > 1:
-            p = p // 2
+            p //= 2
             self.st[p] = self.fn(self.st[p * 2], self.st[p * 2 + 1])
 
     def query(self, l: int, r: int) -> T:  # noqa: E741

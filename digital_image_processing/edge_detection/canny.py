@@ -10,12 +10,11 @@ PI = 180
 def gen_gaussian_kernel(k_size, sigma):
     center = k_size // 2
     x, y = np.mgrid[0 - center : k_size - center, 0 - center : k_size - center]
-    g = (
+    return (
         1
         / (2 * np.pi * sigma)
         * np.exp(-(np.square(x) + np.square(y)) / (2 * np.square(sigma)))
     )
-    return g
 
 
 def canny(image, threshold_low=15, threshold_high=30, weak=128, strong=255):

@@ -26,8 +26,8 @@ def modular_exponential(base: int, power: int, mod: int):
     while power > 0:
         if power & 1:
             result = (result * base) % mod
-        power = power >> 1
-        base = (base * base) % mod
+        power >>= 1
+        base = base**2 % mod
 
     return result
 

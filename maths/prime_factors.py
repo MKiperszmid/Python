@@ -35,7 +35,7 @@ def prime_factors(n: int) -> List[int]:
     """
     i = 2
     factors = []
-    while i * i <= n:
+    while i ** 2 <= n:
         if n % i:
             i += 1
         else:

@@ -77,7 +77,7 @@ if __name__ == "__main__":
     processes = [1, 2, 3]
 
     # ensure that we actually have processes
-    if len(processes) == 0:
+    if not processes:
         print("Zero amount of processes")
         exit()
 

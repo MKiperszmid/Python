@@ -61,10 +61,8 @@ def solution(n):
     23514624000
     """
     return max(
-        [
-            reduce(lambda x, y: int(x) * int(y), n[i : i + 13])
-            for i in range(len(n) - 12)
-        ]
+        reduce(lambda x, y: int(x) * int(y), n[i : i + 13])
+        for i in range(len(n) - 12)
     )
 
 

@@ -21,7 +21,7 @@ def equation(x: float) -> float:
     >>> equation(-0.1)
     9.99
     """
-    return 10 - x * x
+    return 10 - x**2
 
 
 def bisection(a: float, b: float) -> float:

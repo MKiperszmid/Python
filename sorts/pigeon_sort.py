@@ -30,11 +30,11 @@ def pigeon_sort(array):
     min = array[0]
     max = array[0]
 
-    for i in range(len(array)):
-        if array[i] < min:
-            min = array[i]
-        elif array[i] > max:
-            max = array[i]
+    for item_ in array:
+        if item_ < min:
+            min = item_
+        elif item_ > max:
+            max = item_
 
     # Compute the variables
     holes_range = max - min + 1
@@ -42,14 +42,11 @@ def pigeon_sort(array):
     holes_repeat = [0 for _ in range(holes_range)]
 
     # Make the sorting.
-    for i in range(len(array)):
-        index = array[i] - min
-        if holes[index] != array[i]:
-            holes[index] = array[i]
-            holes_repeat[index] += 1
-        else:
-            holes_repeat[index] += 1
-
+    for item in array:
+        index = item - min
+        if holes[index] != item:
+            holes[index] = item
+        holes_repeat[index] += 1
     # Makes the array back by replacing the numbers.
     index = 0
     for i in range(holes_range):

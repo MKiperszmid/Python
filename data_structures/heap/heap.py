@@ -41,17 +41,18 @@ class Heap(object):
         return None
 
     def max_heapify(self, index):
-        if index < self.curr_size:
-            largest = index
-            lc = self.get_left_child_index(index)
-            rc = self.get_right_child(index)
-            if lc is not None and self.h[lc] > self.h[largest]:
-                largest = lc
-            if rc is not None and self.h[rc] > self.h[largest]:
-                largest = rc
-            if largest != index:
-                self.h[largest], self.h[index] = self.h[index], self.h[largest]
-                self.max_heapify(largest)
+        if index >= self.curr_size:
+            return
+        largest = index
+        lc = self.get_left_child_index(index)
+        rc = self.get_right_child(index)
+        if lc is not None and self.h[lc] > self.h[largest]:
+            largest = lc
+        if rc is not None and self.h[rc] > self.h[largest]:
+            largest = rc
+        if largest != index:
+            self.h[largest], self.h[index] = self.h[index], self.h[largest]
+            self.max_heapify(largest)
 
     def build_heap(self, collection):
         self.curr_size = len(collection)

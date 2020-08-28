@@ -406,7 +406,7 @@ def kgV(number1, number2):
                 count1 = primeFac1.count(n)
                 count2 = primeFac2.count(n)
 
-                for i in range(max(count1, count2)):
+                for _ in range(max(count1, count2)):
                     ans *= n
 
             else:
@@ -451,12 +451,9 @@ def getPrime(n):
     # precondition
     assert isinstance(n, int) and (n >= 0), "'number' must been a positive int"
 
-    index = 0
     ans = 2  # this variable holds the answer
 
-    while index < n:
-
-        index += 1
+    for _ in range(n):
 
         ans += 1  # counts to the next number
 
@@ -635,7 +632,7 @@ def fib(n):
     fib1 = 1
     ans = 1  # this will be return
 
-    for i in range(n - 1):
+    for _ in range(n - 1):
 
         tmp = ans
         ans += fib1

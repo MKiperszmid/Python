@@ -101,7 +101,7 @@ class LinkedList:
         # If list is empty
         if current is None:
             raise IndexError("The Linked List is empty")
-        for i in range(index):
+        for _ in range(index):
             if current.next is None:
                 raise IndexError("Index out of range.")
             current = current.next

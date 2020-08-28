@@ -24,8 +24,8 @@ class FileSplitter:
         return self.block_filenames
 
     def split(self, block_size, sort_key=None):
-        i = 0
         with open(self.filename) as file:
+            i = 0
             while True:
                 lines = file.readlines(block_size)
 
@@ -77,10 +77,7 @@ class FilesArray:
                     self.empty.add(i)
                     self.files[i].close()
 
-        if len(self.empty) == self.num_buffers:
-            return False
-
-        return True
+        return len(self.empty) != self.num_buffers
 
     def unshift(self, index):
         value = self.buffers[index]

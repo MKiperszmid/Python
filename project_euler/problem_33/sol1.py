@@ -17,10 +17,12 @@ terms, find the value of the denominator.
 
 
 def isDigitCancelling(num, den):
-    if num != den:
-        if num % 10 == den // 10:
-            if (num // 10) / (den % 10) == num / den:
-                return True
+    if (
+        num != den
+        and num % 10 == den // 10
+        and (num // 10) / (den % 10) == num / den
+    ):
+        return True
 
 
 def solve(digit_len: int) -> str:
@@ -41,9 +43,13 @@ def solve(digit_len: int) -> str:
     last_digit = int("1" + "0" * digit_len)
     for num in range(den, last_digit):
         while den <= 99:
-            if (num != den) and (num % 10 == den // 10) and (den % 10 != 0):
-                if isDigitCancelling(num, den):
-                    solutions.append(f"{num}/{den}")
+            if (
+                (num != den)
+                and (num % 10 == den // 10)
+                and (den % 10 != 0)
+                and isDigitCancelling(num, den)
+            ):
+                solutions.append(f"{num}/{den}")
             den += 1
         num += 1
         den = 10

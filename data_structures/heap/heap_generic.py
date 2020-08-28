@@ -6,7 +6,7 @@ class Heap:
 
     def __init__(self, key=None):
         # Stores actual heap items.
-        self.arr = list()
+        self.arr = []
         # Stores indexes of each item for supporting updates and deletion.
         self.pos_map = {}
         # Stores current size of heap.

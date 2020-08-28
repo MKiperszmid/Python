@@ -222,8 +222,9 @@ def _det(a, b, c):
     -100.0
     """
 
-    det = (a.x * b.y + b.x * c.y + c.x * a.y) - (a.y * b.x + b.y * c.x + c.y * a.x)
-    return det
+    return (a.x * b.y + b.x * c.y + c.x * a.y) - (
+        a.y * b.x + b.y * c.x + c.y * a.x
+    )
 
 
 def convex_hull_bf(points):

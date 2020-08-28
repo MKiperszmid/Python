@@ -50,7 +50,7 @@ def solution(n: int) -> int:
             i += 1
         ans = i
         while n % i == 0:
-            n = n / i
+            n /= i
         i += 1
 
     return int(ans)

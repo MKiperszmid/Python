@@ -74,7 +74,7 @@ class Perceptron:
             for i in range(self.number_sample):
                 u = 0
                 for j in range(self.col_sample + 1):
-                    u = u + self.weight[j] * self.sample[i][j]
+                    u += self.weight[j] * self.sample[i][j]
                 y = self.sign(u)
                 if y != self.target[i]:
                     for j in range(self.col_sample + 1):
@@ -86,7 +86,7 @@ class Perceptron:
                         )
                     has_misclassified = True
             # print('Epoch: \n',epoch_count)
-            epoch_count = epoch_count + 1
+            epoch_count += 1
             # if you want control the epoch or just by error
             if not has_misclassified:
                 print(("\nEpoch:\n", epoch_count))
@@ -113,7 +113,7 @@ class Perceptron:
         sample.insert(0, self.bias)
         u = 0
         for i in range(self.col_sample + 1):
-            u = u + self.weight[i] * sample[i]
+            u += self.weight[i] * sample[i]
 
         y = self.sign(u)
 

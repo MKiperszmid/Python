@@ -291,14 +291,11 @@ class RedBlackTree:
         """A helper function to recursively check Property 4 of a
         Red-Black Tree. See check_color_properties for more info.
         """
-        if self.color == 1:
-            if color(self.left) == 1 or color(self.right) == 1:
-                return False
+        if self.color == 1 and (color(self.left) == 1 or color(self.right) == 1):
+            return False
         if self.left and not self.left.check_coloring():
             return False
-        if self.right and not self.right.check_coloring():
-            return False
-        return True
+        return bool(not self.right or self.right.check_coloring())
 
     def black_height(self):
         """Returns the number of black nodes from this node to the
@@ -529,9 +526,7 @@ def test_rotations():
     right_rot.right.right = RedBlackTree(10, parent=right_rot.right)
     right_rot.right.right.left = RedBlackTree(5, parent=right_rot.right.right)
     right_rot.right.right.right = RedBlackTree(20, parent=right_rot.right.right)
-    if tree != right_rot:
-        return False
-    return True
+    return tree == right_rot
 
 
 def test_insertion_speed():
@@ -602,9 +597,7 @@ def test_insert_delete():
     tree = tree.remove(9)
     if not tree.check_color_properties():
         return False
-    if list(tree.inorder_traverse()) != [-8, 0, 4, 8, 10, 11, 12]:
-        return False
-    return True
+    return list(tree.inorder_traverse()) == [-8, 0, 4, 8, 10, 11, 12]
 
 
 def test_floor_ceil():
@@ -617,10 +610,10 @@ def test_floor_ceil():
     tree.insert(20)
     tree.insert(22)
     tuples = [(-20, None, -16), (-10, -16, 0), (8, 8, 8), (50, 24, None)]
-    for val, floor, ceil in tuples:
-        if tree.floor(val) != floor or tree.ceil(val) != ceil:
-            return False
-    return True
+    return not any(
+        tree.floor(val) != floor or tree.ceil(val) != ceil
+        for val, floor, ceil in tuples
+    )
 
 
 def test_min_max():
@@ -632,9 +625,7 @@ def test_min_max():
     tree.insert(24)
     tree.insert(20)
     tree.insert(22)
-    if tree.get_max() != 22 or tree.get_min() != -16:
-        return False
-    return True
+    return tree.get_max() == 22 and tree.get_min() == -16
 
 
 def test_tree_traversal():
@@ -650,9 +641,7 @@ def test_tree_traversal():
         return False
     if list(tree.preorder_traverse()) != [0, -16, 16, 8, 22, 20, 24]:
         return False
-    if list(tree.postorder_traverse()) != [-16, 8, 20, 24, 22, 16, 0]:
-        return False
-    return True
+    return list(tree.postorder_traverse()) == [-16, 8, 20, 24, 22, 16, 0]
 
 
 def test_tree_chaining():
@@ -663,9 +652,7 @@ def test_tree_chaining():
         return False
     if list(tree.preorder_traverse()) != [0, -16, 16, 8, 22, 20, 24]:
         return False
-    if list(tree.postorder_traverse()) != [-16, 8, 20, 24, 22, 16, 0]:
-        return False
-    return True
+    return list(tree.postorder_traverse()) == [-16, 8, 20, 24, 22, 16, 0]
 
 
 def print_results(msg: str, passes: bool) -> None:

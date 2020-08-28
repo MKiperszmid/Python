@@ -62,8 +62,7 @@ def convert_si_prefix(
         known_prefix: SI_Unit = SI_Unit[known_prefix.lower()]
     if isinstance(unknown_prefix, str):
         unknown_prefix: SI_Unit = SI_Unit[unknown_prefix.lower()]
-    unknown_amount = known_amount * (10 ** (known_prefix.value - unknown_prefix.value))
-    return unknown_amount
+    return known_amount * (10 ** (known_prefix.value - unknown_prefix.value))
 
 
 def convert_binary_prefix(
@@ -88,10 +87,9 @@ def convert_binary_prefix(
         known_prefix: Binary_Unit = Binary_Unit[known_prefix.lower()]
     if isinstance(unknown_prefix, str):
         unknown_prefix: Binary_Unit = Binary_Unit[unknown_prefix.lower()]
-    unknown_amount = known_amount * (
+    return known_amount * (
         2 ** ((known_prefix.value - unknown_prefix.value) * 10)
     )
-    return unknown_amount
 
 
 if __name__ == "__main__":

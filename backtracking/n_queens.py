@@ -26,16 +26,16 @@ def isSafe(board, row, column):
     for i in range(len(board)):
         if board[row][i] == 1:
             return False
-    for i in range(len(board)):
-        if board[i][column] == 1:
+    for item in board:
+        if item[column] == 1:
             return False
     for i, j in zip(range(row, -1, -1), range(column, -1, -1)):
         if board[i][j] == 1:
             return False
-    for i, j in zip(range(row, -1, -1), range(column, len(board))):
-        if board[i][j] == 1:
-            return False
-    return True
+    return all(
+        board[i][j] != 1
+        for i, j in zip(range(row, -1, -1), range(column, len(board)))
+    )
 
 
 def solve(board, row):
@@ -72,9 +72,9 @@ def printboard(board):
     """
     Prints the boards that have a successful combination.
     """
-    for i in range(len(board)):
+    for item in board:
         for j in range(len(board)):
-            if board[i][j] == 1:
+            if item[j] == 1:
                 print("Q", end=" ")
             else:
                 print(".", end=" ")

@@ -40,11 +40,11 @@ class LinkedList:
         new_node = Node(data)
         if self.is_empty:
             self.tail = new_node
-            self.head = new_node
         else:
             self.head.previous = new_node
             new_node.next = self.head
-            self.head = new_node
+
+        self.head = new_node
 
     def delete_head(self) -> str:
         if self.is_empty:
@@ -94,7 +94,7 @@ class LinkedList:
             else:  # We have reached the end an no value matches
                 return "No data matching given value"
 
-        if current == self.head:
+        if current == current:
             self.delete_head()
 
         elif current == self.tail:

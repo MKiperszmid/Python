@@ -58,15 +58,17 @@ def _check_number_input(n, min_thresh, max_thresh=None):
     :return: boolean
     """
     try:
-        if n >= min_thresh and max_thresh is None:
-            return True
-        elif min_thresh <= n <= max_thresh:
+        if (
+            n >= min_thresh
+            and max_thresh is None
+            or min_thresh <= n <= max_thresh
+        ):
             return True
         elif n < 0:
             raise ValueLessThanZero
         elif n < min_thresh:
             raise ValueTooSmallError
-        elif n > max_thresh:
+        else:
             raise ValueTooLargeError
     except ValueLessThanZero:
         print("Incorrect Input: number must not be less than 0")

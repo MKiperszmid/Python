@@ -28,8 +28,8 @@ class contrastStretch:
         self.original_image = copy.deepcopy(self.img)
         x, _, _ = plt.hist(self.img.ravel(), 256, [0, 256], label="x")
         self.k = np.sum(x)
-        for i in range(len(x)):
-            prk = x[i] / self.k
+        for item in x:
+            prk = item / self.k
             self.sk += prk
             last = (self.L - 1) * self.sk
             if self.rem != 0:

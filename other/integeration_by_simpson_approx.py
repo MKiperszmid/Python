@@ -19,7 +19,7 @@ N_STEPS = 1000
 
 
 def f(x: float) -> float:
-    return x * x
+    return x**2
 
 
 """

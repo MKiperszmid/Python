@@ -43,11 +43,9 @@ def solution(n):
         while number > 1:
             if number % 2 == 0:
                 number /= 2
-                counter += 1
             else:
                 number = (3 * number) + 1
-                counter += 1
-
+            counter += 1
         if counter > pre_counter:
             largest_number = input1
             pre_counter = counter

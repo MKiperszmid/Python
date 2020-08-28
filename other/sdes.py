@@ -26,10 +26,7 @@ def XOR(a, b):
     """
     res = ""
     for i in range(len(a)):
-        if a[i] == b[i]:
-            res += "0"
-        else:
-            res += "1"
+        res += "0" if a[i] == b[i] else "1"
     return res
 
 

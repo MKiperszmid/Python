@@ -24,7 +24,7 @@ def factorial(input_number: int) -> int:
         raise ValueError("factorial() only accepts integral values")
     result = 1
     for i in range(1, input_number):
-        result = result * (i + 1)
+        result *= i + 1
     return result
 
 

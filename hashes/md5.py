@@ -71,14 +71,14 @@ def getBlock(bitString):
             bitString {[string]} -- [binary string >= 512]
     """
 
-    currPos = 0
-    while currPos < len(bitString):
+    for currPos in range(0, len(bitString), 512):
         currPart = bitString[currPos : currPos + 512]
-        mySplits = []
-        for i in range(16):
-            mySplits.append(int(rearrange(currPart[32 * i : 32 * i + 32]), 2))
+        mySplits = [
+            int(rearrange(currPart[32 * i : 32 * i + 32]), 2)
+            for i in range(16)
+        ]
+
         yield mySplits
-        currPos += 512
 
 
 def not32(i):
@@ -221,8 +221,7 @@ def md5me(testString):
         c0 = sum32(c0, C)
         d0 = sum32(d0, D)
 
-    digest = reformatHex(a0) + reformatHex(b0) + reformatHex(c0) + reformatHex(d0)
-    return digest
+    return reformatHex(a0) + reformatHex(b0) + reformatHex(c0) + reformatHex(d0)
 
 
 def test():

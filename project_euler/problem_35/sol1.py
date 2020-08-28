@@ -10,13 +10,14 @@ below 1 million using the Seive of Eratosthenes.  Then, out of all these primes,
 we will rule out the numbers which contain an even digit.  After this we will
 generate each circular combination of the number and check if all are prime.
 """
+
 from typing import List
 
 seive = [True] * 1000001
 i = 2
-while i * i <= 1000000:
+while i ** 2 <= 1000000:
     if seive[i]:
-        for j in range(i * i, 1000001, i):
+        for j in range(i**2, 1000001, i):
             seive[j] = False
     i += 1
 

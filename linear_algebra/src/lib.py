@@ -91,9 +91,7 @@ class Vector:
         """
             returns the euclidean length of the vector
         """
-        summe = 0
-        for c in self.__components:
-            summe += c ** 2
+        summe = sum(c ** 2 for c in self.__components)
         return math.sqrt(summe)
 
     def __add__(self, other):
@@ -283,8 +281,8 @@ class Matrix:
         if self.__height == self.__width and self.__width >= 2:
             total = 0
             if self.__width > 2:
-                for x in range(0, self.__width):
-                    for y in range(0, self.__height):
+                for x in range(self.__width):
+                    for y in range(self.__height):
                         total += (
                             self.__matrix[x][y]
                             * (-1) ** (x + y)
@@ -337,9 +335,11 @@ class Matrix:
         if self.__width == other.width() and self.__height == other.height():
             matrix = []
             for i in range(self.__height):
-                row = []
-                for j in range(self.__width):
-                    row.append(self.__matrix[i][j] + other.component(i, j))
+                row = [
+                    self.__matrix[i][j] + other.component(i, j)
+                    for j in range(self.__width)
+                ]
+
                 matrix.append(row)
             return Matrix(matrix, self.__width, self.__height)
         else:
@@ -352,9 +352,11 @@ class Matrix:
         if self.__width == other.width() and self.__height == other.height():
             matrix = []
             for i in range(self.__height):
-                row = []
-                for j in range(self.__width):
-                    row.append(self.__matrix[i][j] - other.component(i, j))
+                row = [
+                    self.__matrix[i][j] - other.component(i, j)
+                    for j in range(self.__width)
+                ]
+
                 matrix.append(row)
             return Matrix(matrix, self.__width, self.__height)
         else:

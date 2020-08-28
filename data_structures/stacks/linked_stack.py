@@ -48,12 +48,10 @@ class LinkedStack:
     def push(self, item: Any) -> None:
         """ append item to top of stack """
         node: Node = Node(item)
-        if self.is_empty():
-            self.top = node
-        else:
+        if not self.is_empty():
             # each node points to the item "lower" in the stack
             node.next = self.top
-            self.top = node
+        self.top = node
 
     def pop(self) -> Any:
         """ returns and removes item at top of stack """

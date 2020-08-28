@@ -43,8 +43,7 @@ def solution(n):
     1
     """
     f = factorial(n)
-    result = split_and_add(f)
-    return result
+    return split_and_add(f)
 
 
 if __name__ == "__main__":

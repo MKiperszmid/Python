@@ -75,7 +75,7 @@ def simulated_annealing(
                 )  # probability generation function
                 if random.random() < probability:  # random number within probability
                     next_state = picked_neighbor
-        current_temp = current_temp - (current_temp * rate_of_decrease)
+        current_temp -= current_temp * rate_of_decrease
 
         if current_temp < threshold_temp or next_state is None:
             # temperature below threshold, or could not find a suitable neighbor

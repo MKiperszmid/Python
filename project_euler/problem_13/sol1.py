@@ -24,7 +24,5 @@ def solution(array):
 if __name__ == "__main__":
     n = int(input().strip())
 
-    array = []
-    for i in range(n):
-        array.append(int(input().strip()))
+    array = [int(input().strip()) for _ in range(n)]
     print(solution(array))

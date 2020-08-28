@@ -51,15 +51,14 @@ def generate_neighbours(path):
     with open(path) as f:
         for line in f:
             if line.split()[0] not in dict_of_neighbours:
-                _list = list()
-                _list.append([line.split()[1], line.split()[2]])
+                _list = [[line.split()[1], line.split()[2]]]
                 dict_of_neighbours[line.split()[0]] = _list
             else:
                 dict_of_neighbours[line.split()[0]].append(
                     [line.split()[1], line.split()[2]]
                 )
             if line.split()[1] not in dict_of_neighbours:
-                _list = list()
+                _list = []
                 _list.append([line.split()[0], line.split()[2]])
                 dict_of_neighbours[line.split()[1]] = _list
             else:
@@ -104,7 +103,7 @@ def generate_first_solution(path, dict_of_neighbours):
                 best_node = k[0]
 
         first_solution.append(visiting)
-        distance_of_first_solution = distance_of_first_solution + int(minim)
+        distance_of_first_solution += int(minim)
         visiting = best_node
 
     first_solution.append(end_node)
@@ -172,7 +171,7 @@ def find_neighborhood(solution, dict_of_neighbours):
                 next_node = _tmp[_tmp.index(k) + 1]
                 for i in dict_of_neighbours[k]:
                     if i[0] == next_node:
-                        distance = distance + int(i[1])
+                        distance += int(i[1])
             _tmp.append(distance)
 
             if _tmp not in neighborhood_of_solution:
@@ -204,13 +203,12 @@ def tabu_search(
     :return best_cost: The total distance that Travelling Salesman will travel, if he
         follows the path in best_solution ever.
     """
-    count = 1
     solution = first_solution
-    tabu_list = list()
+    tabu_list = []
     best_cost = distance_of_first_solution
     best_solution_ever = solution
 
-    while count <= iters:
+    for _ in range(1, iters + 1):
         neighborhood = find_neighborhood(solution, dict_of_neighbours)
         index_of_best_solution = 0
         best_solution = neighborhood[index_of_best_solution]
@@ -225,7 +223,7 @@ def tabu_search(
                     first_exchange_node = best_solution[i]
                     second_exchange_node = solution[i]
                     break
-                i = i + 1
+                i += 1
 
             if [first_exchange_node, second_exchange_node] not in tabu_list and [
                 second_exchange_node,
@@ -239,13 +237,11 @@ def tabu_search(
                     best_cost = cost
                     best_solution_ever = solution
             else:
-                index_of_best_solution = index_of_best_solution + 1
+                index_of_best_solution += 1
                 best_solution = neighborhood[index_of_best_solution]
 
         if len(tabu_list) >= size:
             tabu_list.pop(0)
-
-        count = count + 1
 
     return best_solution_ever, best_cost
 
